@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextBox from './TextBox';
 
 const AddTask = ({ onAdd }) => {
     const [text, setText] = useState('');
@@ -22,14 +23,8 @@ const AddTask = ({ onAdd }) => {
 
   return (
     <form className='add-form' onSubmit={onSubmit}>
-        <div className="form-control">
-            <label>Task</label>
-            <input type='text' placeholder='Task Description' value={text} onChange={(e) => setText(e.target.value)} />
-        </div>
-        <div className="form-control">
-            <label>Date</label>
-            <input type='text' placeholder='DD.MM.YYYY' value={date} onChange={(e) => setDate(e.target.value)} />
-        </div>
+        <TextBox name='Task' type='text' placeholder='Task Description' onChange={(e) => setText(e.target.value)} startValue={text} />
+        <TextBox name='Date' type='text' placeholder='DD.MM.YYYY' onChange={(e) => setDate(e.target.value)} startValue={date} />
         <div className="form-control form-control-check">
             <label>Set Reminder</label>
             <input type='checkbox' checked={reminder} onChange={(e) => setReminder(e.currentTarget.checked)} />
